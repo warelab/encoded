@@ -6,7 +6,7 @@ counter=0
 	startTime=$(date 2>&1)
 
 	indexerOutput=$(python jsonParse.py 2>&1)
-while [ $indexerOutput == "indexing" ]
+while [ "$indexerOutput" == "indexing" ]
 	do
 		indexerOutput=$(python jsonParse.py 2>&1) 
 		sleep 1

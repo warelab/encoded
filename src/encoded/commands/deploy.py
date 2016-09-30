@@ -45,7 +45,7 @@ def create_ec2_instances(client, image_id, count, instance_type, security_groups
     )
     return reservations
 
-def tag_ec2_instance(instance, name, branch, commit, username, elasticsearch):
+def tag_ec2_instance(instance, name, branch, commit, username, elasticsearch, cluster_name):
     tags=[
         {'Key': 'Name', 'Value': name},
         {'Key': 'branch', 'Value': branch},
@@ -54,6 +54,8 @@ def tag_ec2_instance(instance, name, branch, commit, username, elasticsearch):
     ]
     if elasticsearch == 'yes':
         tags.append({'Key': 'elasticsearch', 'Value': elasticsearch})
+    if cluster_name != None:
+        tags.append({'Key': 'ec_cluster_name', 'Value': cluster_name})
     instance.create_tags(Tags=tags)
     return instance
 
@@ -131,7 +133,7 @@ def run(wale_s3_prefix, image_id, instance_type, elasticsearch, cluster_size, cl
             tmp_name = name
         print('%s.%s.encodedcc.org' % (instance.id, domain))  # Instance:i-34edd56f
         instance.wait_until_exists()
-        tag_ec2_instance(instance, tmp_name, branch, commit, username, elasticsearch)
+        tag_ec2_instance(instance, tmp_name, branch, commit, username, elasticsearch, cluster_name)
         print('ssh %s.%s.encodedcc.org' % (tmp_name, domain))
         if domain == 'instance':
             print('https://%s.demo.encodedcc.org' % tmp_name)

@@ -7,6 +7,7 @@ from datetime import datetime
 
 URLS = [str(sys.argv[1])]
 
+print("URL: %s" % URLS)
 
 def query_list(base_url):
     arr = []
