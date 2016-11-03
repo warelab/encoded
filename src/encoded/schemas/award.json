@@ -18,12 +18,12 @@
         "title": {
             "rdfs:subPropertyOf": "dc:title",
             "title": "Name",
-            "description": "The grant name from the NIH database, if applicable.",
+            "description": "The grant name from the NSF or other funder database, if applicable.",
             "type": "string"
         },
         "name": {
             "title": "Number",
-            "description": "The official grant number from the NIH database, if applicable",
+            "description": "The official grant number from the NFH or other funder database, if applicable",
             "type": "string",
             "pattern": "^[A-Za-z0-9\\-]+$",
             "uniqueKey": true
@@ -71,14 +71,7 @@
             "description": "The name of the bioproject phase.",
             "type": "string",
             "enum": [
-                "ENCODE",
-                "ENCODE2",
-                "ENCODE2-Mouse",
-                "ENCODE3",
-                "GGR",
-                "Roadmap",
-                "modENCODE",
-                "modERN"
+                "MaizeCODE pilot"
             ]
         },
         "project": {
@@ -86,11 +79,7 @@
             "description": "The collection of biological data related to a single initiative, originating from a consortium.",
             "type": "string",
             "enum": [
-                "ENCODE",
-                "GGR",
-                "Roadmap",
-                "modENCODE",
-                "modERN"
+                "MaizeCODE",
             ]
         },
         "viewing_group": {
@@ -98,9 +87,8 @@
             "description": "The group that determines which set of data the user has permission to view.",
             "type": "string",
             "enum": [
-                "ENCODE",
-                "GGR",
-                "REMC"
+                "MaizeCODE",
+                "Sorghum"
             ]
         }
     },
